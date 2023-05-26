@@ -116,8 +116,8 @@ public DtoEntity insertEntity(DtoEntity dtoEntity) {
         if (sender.getMoney() >= amount){
             sender.setMoney(sender.getMoney() - amount);
             receiver.setMoney(receiver.getMoney() + amount);
-            sender.setPayment_story("Send:"+amount+" to "+receiver.getName());
-            receiver.setPayment_story(" (Get:"+amount+" from "+sender.getName()+")");
+            sender.setPayment_story(sender.getPayment_story()+ " (Send:"+amount+" to "+receiver.getName()+")");
+            receiver.setPayment_story(receiver.getPayment_story()+" (Get:"+amount+" from "+sender.getName()+")");
             updateEntity(sender.getId(), sender);
             updateEntity(receiver.getId(), receiver);
             return "Transfer operation successfully executed for users:" + sender.getName() + " -> " + receiver.getName() + " amount - " + amount;
